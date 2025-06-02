@@ -44,7 +44,7 @@ const ProtectedGallery: React.FC<ProtectedGalleryProps> = ({ correctPassword }) 
       {!isUnlocked ? (
         <div className="text-center">
           <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <Lock className="text-pink-500" size={24} />
+            <Lock className="text-pink-500\" size={24} />
           </div>
           
           <h3 className="text-xl font-semibold mb-4">Protected Memories</h3>
