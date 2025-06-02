@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Heart, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Navigation: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,28 +35,26 @@ const Navigation: React.FC = () => {
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
+        scrolled ? 'bg-white/95 backdrop-blur-sm shadow-md py-2' : 'bg-transparent py-4'
       }`}
     >
       <div className="container-custom flex items-center justify-between">
         <Link 
           to="/" 
-          className="flex items-center space-x-2"
+          className="flex items-center space-x-3"
           onClick={closeMenu}
         >
-          <Heart 
-            className={`transition-colors duration-300 ${
-              scrolled ? 'text-pink-500' : 'text-pink-500'
-            }`} 
-            fill="#F43F5E" 
-            size={24} 
-          />
+          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-500 to-purple-500 flex items-center justify-center text-white font-serif text-lg">
+            <span className="relative">
+              A<span className="absolute -top-1 -right-2 text-xs">❤</span>K
+            </span>
+          </div>
           <span 
             className={`font-serif font-bold text-xl transition-colors duration-300 ${
               scrolled ? 'text-gray-800' : 'text-gray-800'
             }`}
           >
-            For My Love
+            Hi-Jack
           </span>
         </Link>
 
@@ -66,17 +64,23 @@ const Navigation: React.FC = () => {
             Home
           </NavLink>
           <NavLink to="/gallery" active={isActive('/gallery')} scrolled={scrolled}>
-            Gallery
+            Our Memories
           </NavLink>
           <NavLink to="/love-notes" active={isActive('/love-notes')} scrolled={scrolled}>
             Love Notes
           </NavLink>
           <NavLink to="/reasons" active={isActive('/reasons')} scrolled={scrolled}>
-            Reasons Why
+            Why I Love You
           </NavLink>
           <NavLink to="/timeline" active={isActive('/timeline')} scrolled={scrolled}>
-            Our Timeline
+            Our Story
           </NavLink>
+          <button
+            onClick={() => window.location.href = 'mailto:jack171070@gmail.com'}
+            className="px-4 py-2 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+          >
+            Message Appii
+          </button>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -91,7 +95,7 @@ const Navigation: React.FC = () => {
 
       {/* Mobile Menu */}
       <div 
-        className={`fixed inset-0 bg-pink-50 z-40 transition-transform duration-300 ease-in-out transform ${
+        className={`fixed inset-0 bg-white/95 backdrop-blur-sm z-40 transition-transform duration-300 ease-in-out transform ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         } md:hidden flex flex-col pt-20`}
       >
@@ -100,20 +104,23 @@ const Navigation: React.FC = () => {
             Home
           </MobileNavLink>
           <MobileNavLink to="/gallery" active={isActive('/gallery')} onClick={closeMenu}>
-            Gallery
+            Our Memories
           </MobileNavLink>
           <MobileNavLink to="/love-notes" active={isActive('/love-notes')} onClick={closeMenu}>
             Love Notes
           </MobileNavLink>
           <MobileNavLink to="/reasons" active={isActive('/reasons')} onClick={closeMenu}>
-            Reasons Why
+            Why I Love You
           </MobileNavLink>
           <MobileNavLink to="/timeline" active={isActive('/timeline')} onClick={closeMenu}>
-            Our Timeline
+            Our Story
           </MobileNavLink>
-          <MobileNavLink to="/settings" active={isActive('/settings')} onClick={closeMenu}>
-            Settings
-          </MobileNavLink>
+          <button
+            onClick={() => window.location.href = 'mailto:jack171070@gmail.com'}
+            className="px-6 py-2 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-full hover:shadow-lg transition-all duration-300"
+          >
+            Message Appii
+          </button>
         </div>
       </div>
     </header>
@@ -140,7 +147,7 @@ const NavLink: React.FC<NavLinkProps> = ({ to, active, scrolled, children }) => 
   >
     {children}
     {active && (
-      <span className="absolute bottom-0 left-0 w-full h-0.5 bg-pink-500 transform translate-y-1"></span>
+      <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-pink-500 to-purple-500 transform translate-y-1"></span>
     )}
   </Link>
 );
