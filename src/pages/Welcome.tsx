@@ -202,5 +202,3 @@ const NavCard: React.FC<NavCardProps> = ({ to, icon, title, description }) => (
 );
 
 export default Welcome;
-
-export default Welcome
