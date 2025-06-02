@@ -9,12 +9,10 @@ import HeartButton from '../components/HeartButton';
 const Welcome: React.FC = () => {
   const [showSpecialMessage, setShowSpecialMessage] = useState(false);
   
-  // Set the anniversary date - for demonstration, using a date 3 months from now
-  const nextAnniversary = new Date();
-  nextAnniversary.setMonth(nextAnniversary.getMonth() + 3);
+  // Set anniversary date to March 25, 2024
+  const nextAnniversary = new Date('2024-03-25');
   
-  // Name of significant other - personalize this
-  const partnerName = "My Love";
+  const partnerName = "Kushu";
 
   // Easter egg - click count
   const [clickCount, setClickCount] = useState(0);
@@ -38,13 +36,12 @@ const Welcome: React.FC = () => {
 
   return (
     <div className="pt-16">
-      {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-pink-100/40 to-purple-100/40"></div>
           <img 
-            src="https://images.pexels.com/photos/5708057/pexels-photo-5708057.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
-            alt="Couple background" 
+            src="https://images.pexels.com/photos/5708057/pexels-photo-5708057.jpeg" 
+            alt="Love background" 
             className="w-full h-full object-cover"
           />
         </div>
@@ -61,17 +58,21 @@ const Welcome: React.FC = () => {
               animate={{ rotate: [0, 5, 0, -5, 0] }}
               transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
             >
-              <Heart className="mx-auto text-pink-500" size={48} fill="#F43F5E" />
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-pink-500 to-purple-500 flex items-center justify-center text-white font-serif text-2xl mx-auto">
+                <span className="relative">
+                  A<span className="absolute -top-1 -right-2 text-xs">❤</span>K
+                </span>
+              </div>
             </motion.div>
             
             <AnimatedText 
-              text={`For ${partnerName}`}
+              text={`For My Dearest ${partnerName}`}
               type="heading"
               className="text-4xl md:text-5xl font-bold mb-4 text-gradient"
             />
             
             <AnimatedText 
-              text="A digital love letter, a collection of memories, and all the reasons why you're the most special person in my world."
+              text="To my symbol of purity, my sweetest penguin, my adorable fool sa balak - every moment with you is a treasure I'll cherish forever."
               className="text-gray-700 text-lg mb-8"
               delay={0.4}
             />
@@ -82,12 +83,11 @@ const Welcome: React.FC = () => {
               transition={{ delay: 0.8 }}
             >
               <Link to="/love-notes" className="btn-primary mr-4">Explore Our Love</Link>
-              <HeartButton onClick={handleHeartClick} />
+              <HeartButton onClick={handleHeartClick} message="I love you, Kushu!" />
             </motion.div>
           </motion.div>
         </div>
         
-        {/* Easter Egg Message */}
         <AnimatePresence>
           {showSpecialMessage && (
             <motion.div 
@@ -115,7 +115,6 @@ const Welcome: React.FC = () => {
         </AnimatePresence>
       </section>
       
-      {/* Quick Navigation */}
       <section className="py-16 bg-white">
         <div className="container-custom">
           <h2 className="text-3xl font-bold text-center mb-12">Our Love Story</h2>
@@ -145,7 +144,6 @@ const Welcome: React.FC = () => {
         </div>
       </section>
       
-      {/* Anniversary Countdown */}
       <section className="py-16 bg-pink-50">
         <div className="container-custom">
           <h2 className="text-3xl font-bold text-center mb-8">Counting Down to Our Next Milestone</h2>
@@ -159,7 +157,6 @@ const Welcome: React.FC = () => {
         </div>
       </section>
       
-      {/* Featured Love Note */}
       <section className="py-16 bg-white">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
@@ -205,3 +202,5 @@ const NavCard: React.FC<NavCardProps> = ({ to, icon, title, description }) => (
 );
 
 export default Welcome;
+
+export default Welcome
