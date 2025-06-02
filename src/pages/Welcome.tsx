@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Heart, Camera, MessageCircleHeart, Calendar, Star, Settings } from 'lucide-react';
+import { Heart, Camera, MessageCircleHeart, Calendar, Star } from 'lucide-react';
 import AnimatedText from '../components/AnimatedText';
 import CountdownTimer from '../components/CountdownTimer';
 import HeartButton from '../components/HeartButton';
+import ContactForm from '../components/ContactForm';
 
 const Welcome: React.FC = () => {
   const [showSpecialMessage, setShowSpecialMessage] = useState(false);
@@ -58,10 +59,11 @@ const Welcome: React.FC = () => {
               animate={{ rotate: [0, 5, 0, -5, 0] }}
               transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
             >
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-pink-500 to-purple-500 flex items-center justify-center text-white font-serif text-2xl mx-auto">
-                <span className="relative">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-pink-500 to-purple-500 flex items-center justify-center text-white font-serif text-2xl mx-auto relative overflow-hidden group hover:shadow-lg transition-all duration-300">
+                <span className="relative z-10">
                   A<span className="absolute -top-1 -right-2 text-xs">❤</span>K
                 </span>
+                <div className="absolute inset-0 bg-gradient-to-tr from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
             </motion.div>
             
@@ -159,19 +161,11 @@ const Welcome: React.FC = () => {
       
       <section className="py-16 bg-white">
         <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-3xl mx-auto">
             <Star className="mx-auto text-pink-400 mb-4" size={32} />
-            <h2 className="text-3xl font-bold mb-8">From My Heart to Yours</h2>
+            <h2 className="text-3xl font-bold mb-8 text-center">Message Your Appii</h2>
             
-            <div className="bg-pink-50 p-8 rounded-2xl shadow-sm mb-6">
-              <p className="text-xl italic text-gray-700">
-                "Every day with you is a beautiful adventure. Your love makes ordinary moments extraordinary."
-              </p>
-            </div>
-            
-            <Link to="/love-notes" className="btn-outline">
-              Read More Love Notes
-            </Link>
+            <ContactForm />
           </div>
         </div>
       </section>

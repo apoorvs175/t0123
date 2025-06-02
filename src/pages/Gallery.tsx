@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Search, Plus } from 'lucide-react';
 import PhotoCard from '../components/PhotoCard';
+import ProtectedGallery from '../components/ProtectedGallery';
 import { photos, Photo } from '../data/photos';
 
 const Gallery: React.FC = () => {
@@ -56,6 +57,10 @@ const Gallery: React.FC = () => {
             Cherished moments frozen in time, each telling a story of our love.
           </p>
         </motion.div>
+        
+        <div className="mb-12">
+          <ProtectedGallery correctPassword="kushu" />
+        </div>
         
         <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
           <div className="relative w-full md:w-auto">
